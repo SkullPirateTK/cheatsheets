@@ -1,0 +1,142 @@
+\documentclass[10pt,landscape, a4paper]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{physics}
+
+
+\pdfinfo{
+  /Title (MA1521 Cheatsheet)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Subject (Example)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% print only section numbers
+\setcounter{secnumdepth}{1}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{flushleft}
+\large{
+    \underline{MA1521 Cheat Sheet}
+    }
+\end{flushleft}
+
+% ------------------------------ACTUAL CONTENT-----------------------------------
+
+\section{Pre-calculus}
+\subsection{Real Numbers \& Functions}
+\begin{gather*}
+    a^2 - b^2 = (a + b)(a - b) \\
+    |x+y| \leq |x| + |y| \\
+    f:A \longrightarrow B, \hspace{0.5em} 
+    g \circ f = g(f(x)), \hspace{0.5em} 
+    g \circ f \neq f \circ g
+\end{gather*}
+A: domain, B: codomain, range: $f = \{f(x) \in B | x \in A\}$ \\
+Injective: $f(x) = f(y) \Rightarrow x = y$, surjective: $\forall z \in B, \exists x \in A, f(x) = z$
+If $f^{-1}$ exists, then $f$ is bijective
+
+\subsection{Trigonometric Identities}
+\begin{gather*}
+    \csc x = \frac{1}{\sin x} \\
+    \sec x = \frac{1}{\cos x} \\
+    \cot x = \frac{1}{\tan x} \\
+    \sin ^2 \theta + \cos ^2 \theta = 1 \\
+    \tan ^2 \theta + 1 = \sec ^2 \theta \\
+    1 + \cot ^2 \theta = \csc ^2 \theta \\
+    \sin (A \pm B) = \sin A \cos B \pm \cos A \sin B \\
+    \cos (A \pm B) = \cos A \cos B \mp \sin A \sin B \\
+    \tan (A \pm B) = \frac{\tan A \pm \tan B}{1 \mp \tan A \tan B} \\
+    \sin 2A = 2 \sin A \cos A \\
+    \cos 2A = \cos ^ 2 A - \sin ^ 2 A = 2\cos^2A - 1 = 1 - 2\sin^2A \\
+    \tan 2A = \frac{2 \tan A}{1- \tan^2 A} \\
+    \sin P \pm \sin Q = 2 \sin (\frac{P \pm Q}{2}) \cos (\frac{P \mp Q}{2}) \\
+    \cos P + \cos Q = 2 \cos (\frac{P + Q}{2}) \cos (\frac{P - Q}{2}) \\
+    \cos P - \cos Q = -2 \sin (\frac{P + Q}{2}) \sin (\frac{P - Q}{2})
+\end{gather*}
+
+\subsection{Values of Trigonometric Functions}
+\vspace{1ex}
+\begin{center}
+    \begin{tabular}{|c c c c c c|}
+        \hline
+        $\theta$ & 0 & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$ \\
+        \hline
+        $\sin$ & 0 & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & 1 \\
+        \hline
+        $\cos$ & 1 & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & 0 \\
+        \hline
+        $\tan$ & 0 & $\frac{\sqrt{3}}{3}$ & 1 & $\sqrt{3}$ & $DNE$ \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Range of a Function}
+First find the maximal domain of $f$ \\
+To find the range of $f$, let $y = f(x)$, solve for $x$, deduce the range (exclude values where $f(x)$ is undefined)
+
+\end{multicols}
+\end{document}
