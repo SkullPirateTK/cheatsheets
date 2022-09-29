@@ -4,11 +4,6 @@
 \usepackage{ifthen}
 \usepackage[landscape]{geometry}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
-\usepackage{color,graphicx,overpic}
-\usepackage{hyperref}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{physics}
 
 
 \pdfinfo{
@@ -91,6 +86,7 @@
 \begin{gather*}
     a^2 - b^2 = (a + b)(a - b) \\
     |x+y| \leq |x| + |y| \\
+    \log_ax = \frac{\ln x}{\ln a} \\
     f:A \longrightarrow B, \hspace{0.5em} 
     g \circ f = g(f(x)), \hspace{0.5em} 
     g \circ f \neq f \circ g
@@ -98,6 +94,13 @@
 A: domain, B: codomain, range: $f = \{f(x) \in B | x \in A\}$ \\
 Injective: $f(x) = f(y) \Rightarrow x = y$, surjective: $\forall z \in B, \exists x \in A, f(x) = z$
 If $f^{-1}$ exists, then $f$ is bijective
+
+\subsection{Linear Equations}
+Slope-intercept: $y = mx + b$ \\
+Point-slope: $y - y_1 = m(x + x_1)$ \\
+Intercept: $\frac{x}{a} + \frac{y}{b} = 1$ \\
+$b$: $y$-intercept, $a$: $x$-intercept, $(x_1, y_1)$ is a point on the line \\
+The gradient of the normal of a line is $\frac{1}{m}$
 
 \subsection{Trigonometric Identities}
 \begin{gather*}
@@ -121,7 +124,9 @@ If $f^{-1}$ exists, then $f$ is bijective
 \subsection{Values of Trigonometric Functions}
 \vspace{1ex}
 \begin{center}
-    \begin{tabular}{|c c c c c c|}
+\bgroup
+\def\arraystretch{1.5}
+    \begin{tabular}{|c | c | c | c | c | c|}
         \hline
         $\theta$ & 0 & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$ \\
         \hline
@@ -132,11 +137,257 @@ If $f^{-1}$ exists, then $f$ is bijective
         $\tan$ & 0 & $\frac{\sqrt{3}}{3}$ & 1 & $\sqrt{3}$ & $DNE$ \\
         \hline
     \end{tabular}
+\egroup
 \end{center}
 
 \subsection{Range of a Function}
 First find the maximal domain of $f$ \\
 To find the range of $f$, let $y = f(x)$, solve for $x$, deduce the range (exclude values where $f(x)$ is undefined)
+
+\section{Limits}
+\subsection{Continuity}
+\vspace{1ex}
+\begin{center}
+    \begin{tabular}{|c | c | c | c | c|}
+        \hline
+        $c$ & $\lim_{x \to c^-} f(x)$ & $\lim_{x \to c^+} f(x)$ & $\lim_{x \to c} f(x)$ & $f(x)$\\
+        \hline
+    \end{tabular}
+\end{center}
+Continuous if $\lim_{x \to c} f(x)$ exists (only if left = right limit) AND \\
+Interior point: $\lim_{x \to c} f(x) = f(c)$ \\
+Left/right end-point: left/right limit equals $f(c)$ \\
+Polynomials, trigonometric/exponential/logarithmic functions and their combinations are continuous
+
+\subsection{Evaluation of Limits}
+\vspace{1ex}
+\[ \lim_{x \to \pm\infty} \frac{k_{1}x^a}{k_{2}x^b}  = 0 (a < b), \frac{A}{B} (a = b), \pm\infty (a > b) \] \\
+\[ \lim_{x \to c} \frac{\sin(g(x))}{g(x)} = \lim_{x \to c} \frac{g(x)}{\sin(g(x))}  = 1\] \\
+\[ \lim_{x \to c} \frac{\tan(g(x))}{g(x)} = \lim_{x \to c} \frac{g(x)}{\tan(g(x))}  = 1\] \\
+In particular, when $c = 0$ and $g(x) = x$
+
+\subsection{Squeeze Theorem}
+If $g(x) \leq f(x) \leq h(x)$ and \[ \lim_{x \to c} g(x) = \lim_{x \to c} h(x) = L \Rightarrow  \lim_{x \to c} f(x) = L \] \\
+If $\lim_{x \to c} g(x) = 0$, \[ \lim_{x \to c} g(x)sin(h(x)) = 0, \lim_{x \to c} g(x)cos(h(x)) = 0 \]
+
+\subsection{Intermediate Value Theorem}
+To show an equation $f(x) = c$ has a root between $a$ and $b$, $f(x)$ must be continuous and $f(a) < c < f(b)$
+
+\section{Derivatives}
+Differentiability implies continuity (converse is not true in general)
+\begin{center}
+\bgroup
+\def\arraystretch{1.5}
+    \begin{tabular}{|c | c |}
+        \hline
+	Function & Derivative \\
+        \hline
+        $(f(x))^n$ & $nf'(x)(f(x))^{n-1}$ \\
+        \hline
+        $\cos(f(x))$ & $-f'(x)\sin(f(x))$ \\
+        \hline
+        $\sin(f(x))$ & $f'(x)\cos(f(x))$ \\
+        \hline
+        $\tan(f(x))$ & $f'(x)\sec^2(f(x))$ \\
+        \hline
+        $\sec(f(x))$ & $f'(x)\sec(f(x))\tan(f(x))$ \\
+        \hline
+        $\csc(f(x))$ & $-f'(x)\csc(f(x))\cot(f(x))$ \\
+        \hline
+        $\cot(f(x))$ & $-f'(x)\csc^2(f(x))$ \\
+        \hline
+        $e^{f(x)}$ & $f'(x)e^{f(x)}$ \\
+        \hline
+        $\ln(f(x))$ & $\frac{f'(x)}{f(x)}$ \\
+        \hline
+        $\sin^{-1}(f(x))$ & $\frac{f'(x)}{\sqrt{1 - f(x)^2}}$ \\
+        \hline
+        $\cos^{-1}(f(x))$ & $-\frac{f'(x)}{\sqrt{1 - f(x)^2}}$ \\
+        \hline
+        $\tan^{-1}(f(x))$ & $\frac{f'(x)}{1 + f(x)^2}$ \\
+        \hline
+        $\cot^{-1}(f(x))$ & $-\frac{f'(x)}{1 + f(x)^2}$ \\
+        \hline
+        $\sec^{-1}(f(x))$ & $\frac{f'(x)}{|f(x)|\sqrt{f(x)^2 - 1}}$ \\
+        \hline
+        $\csc^{-1}(f(x))$ & $-\frac{f'(x)}{|f(x)|\sqrt{f(x)^2 - 1}}$ \\
+        \hline
+    \end{tabular}
+\egroup
+\end{center}
+\[ \frac{d}{dx}(uv) = \frac{du}{dx}v + u\frac{dv}{dx} \]
+\[ \frac{d}{dx}(\frac{u}{v}) = \frac{\frac{du}{dx}v - u\frac{dv}{dx}}{v^2} \]
+\[ \frac{d}{dx}(f(g(x))) = f'(g(x)) \cdot g'(x) \]
+
+\subsection{Implicit Differentiation}
+Differentiate all terms w.r.t. $x$, chain rule on terms only in $y$ e.g. $\frac{d}{dx}y^3 = 3y^2\frac{dy}{dx}$ \\
+For equations of the form $f(x,y) = 0$,
+\[ \frac{dy}{dx} = -\frac{\frac{d}{dx}f(x,y)}{\frac{d}{dy}f(x,y)} \]
+
+\subsection{Derivatives of Inverse Functions}
+For bijective function $f$,
+\[ (f^{-1})'(a) = \frac{1}{f'(f^{-1}(a))} \]
+$f'(f^{-1}(a))$ is the derivative of $f$ evaluated at $f^{-1}(a)$
+
+\subsection{Parametric Equations}
+For curves defined by the equations $x = f(t), y = g(t)$
+\[ \frac{dy}{dx} = \frac{dy}{dt} \div \frac{dx}{dt} \]
+\[ \frac{d^{2}y}{dx^2} = \frac{d}{dt}(\frac{dy}{dx}) \div \frac{dx}{dt} \]
+
+\subsection{Concavity, Extremas}
+$f''(c) > 0 \Rightarrow$ concave upward / local minima, 
+$f''(c) < 0 \Rightarrow$ concave downward / local maxima, 
+$f''(c) = 0 \Rightarrow$ point of inflection \\
+End-points are not considered to be local extremas \\
+Critical point: not an end-point and $f'(c) = 0$ or $DNE$
+Absolute extremum: occurs at end-point or critical point
+
+\subsection{L'Hôpital's Rule}
+\[ \lim_{x \to c}\frac{f(x)}{g(x)} = \lim_{x \to c}\frac{f'(x)}{g'(x)} \]
+
+\section{Integrals}
+\begin{center}
+\bgroup
+\def\arraystretch{1.5}
+    \begin{tabular}{|c | c |}
+        \hline
+	Function & Integral \\
+        \hline
+        $\int(ax + b)^n dx$ & $\frac{(ax + b)^{n + 1}}{(n + 1)a} + C, (n \neq 1)$ \\
+        \hline
+        $\int\frac{1}{ax + b} dx$ & $\frac{1}{a}\ln|ax + b| + C$ \\
+        \hline
+        $\int e^{ax + b} dx$ & $\frac{1}{a}e^{ax + b} + C$ \\
+        \hline
+        $\int\sin(ax + b) dx$ & $-\frac{1}{a}\cos(ax + b) + C$ \\
+        \hline
+        $\int\cos(ax + b) dx$ & $\frac{1}{a}\sin(ax + b) + C$ \\
+        \hline
+        $\int\tan(ax + b) dx$ & $\frac{1}{a}\ln|\sec(ax + b)| + C$ \\
+        \hline
+        $\int\sec(ax + b) dx$ & $\frac{1}{a}\ln|\sec(ax + b) + \tan(ax + b)| + C$ \\
+        \hline
+        $\int\csc(ax + b) dx$ & $-\frac{1}{a}\ln|\csc(ax + b) + \cot(ax + b)| + C$ \\
+        \hline
+        $\int\cot(ax + b) dx$ & $-\frac{1}{a}\ln|\csc(ax + b)| + C$ \\
+        \hline
+        $\int\sec^2(ax + b) dx$ & $\frac{1}{a}\tan(ax + b) + C$ \\
+        \hline
+        $\int\csc^2(ax + b) dx$ & $-\frac{1}{a}\cot(ax + b) + C$ \\
+        \hline
+        $\int\sec(ax + b)\tan(ax + b) dx$ & $\frac{1}{a}\sec(ax + b) + C$ \\
+        \hline
+        $\int\csc(ax + b)\cot(ax + b) dx$ & $-\frac{1}{a}\csc(ax + b) + C$ \\
+        \hline
+        $\int\frac{1}{a^2 + (x + b)^2} dx$ & $\frac{1}{a}\tan^{-1}(\frac{x + b}{a}) + C$ \\
+        \hline
+        $\int\frac{1}{\sqrt{a^2 - (x + b)^2}} dx$ & $\sin^{-1}(\frac{x + b}{a}) + C$ \\
+        \hline
+        $\int\frac{-1}{\sqrt{a^2 - (x + b)^2}} dx$ & $\cos^{-1}(\frac{x + b}{a}) + C$ \\
+        \hline
+        $\int\frac{1}{a^2 - (x + b)^2} dx$ & $\frac{1}{2a}\ln|\frac{x + b + a}{x + b - a}| + C$ \\
+        \hline
+        $\int\frac{1}{(x + b)^2 - a^2} dx$ & $\frac{1}{2a}\ln|\frac{x + b - a}{x + b + a}| + C$ \\
+        \hline
+        $\int\frac{1}{\sqrt{(x + b)^2 + a^2}} dx$ & $\ln|(x + b) + \sqrt{(x + b)^2 + a^2}| + C$ \\
+        \hline
+        $\int\frac{1}{\sqrt{(x + b)^2 - a^2}} dx$ & $\ln|(x + b) + \sqrt{(x + b)^2 - a^2}| + C$ \\
+        \hline
+        $\int\sqrt{a^2 - x^2} dx$ & $\frac{x}{2}\sqrt{a^2 - x^2} + \frac{a^2}{2}\sin^{-1}\frac{x}{a} + C$ \\
+        \hline
+        $\int\sqrt{x^2 - a^2} dx$ & $\frac{x}{2}\sqrt{x^2 - a^2} + \frac{a^2}{2}\ln|x + \sqrt{x^2 - a^2}| + C$ \\
+        \hline
+    \end{tabular}
+\egroup
+\end{center}
+
+\subsection{\hspace{0.3cm}Useful Identities}
+\begin{gather*}
+\cos^2A = \frac{1}{2}(1 + \cos2A) \\
+\sin^2A = \frac{1}{2}(1 - \cos2A) \\
+\sin A \cos B = \frac{1}{2}(\sin(A + B) + \sin(A - B)) \\
+\cos A \sin B = \frac{1}{2}(\sin(A + B) - \sin(A - B)) \\
+\cos A \cos B = \frac{1}{2}(\cos(A + B) + \cos(A - B)) \\
+\sin A \sin B = -\frac{1}{2}(\cos(A + B) - \cos(A - B)) \\
+\end{gather*}
+
+\subsection{\hspace{0.3cm}Partial Fractions}
+\begin{center}
+\bgroup
+\def\arraystretch{1.5}
+    \begin{tabular}{|c | c |}
+        \hline
+	Denominator Factors & Partial Fractions \\
+        \hline
+        $ax + b$ & $\frac{A}{ax + b}$ \\
+        \hline
+        $(ax + b)^2$ & $\frac{A}{ax + b} + \frac{B}{(ax + b)^2}$ \\
+        \hline
+        $ax^2 + bx + c, b^2 - 4ac < 0$ & $\frac{Ax + B}{ax^2 + bx + c}$ \\
+        \hline
+    \end{tabular}
+\egroup
+\end{center}
+\hspace{0.3cm}Improper fraction $\to$ proper fraction: long division
+
+\subsection{\hspace{0.3cm}Integration by Substitution}
+\[ \int f(g(x))g'(x) dx = \int f(u) du \]
+\begin{center}
+\bgroup
+\def\arraystretch{1.5}
+    \begin{tabular}{|c | c |}
+        \hline
+	Expression & Trigonometric Substitution \\
+        \hline
+        $\sqrt{a^2 - (x + b)^2}$ & $x + b = a \sin \theta, -\frac{\pi}{2} \leq \theta \leq \frac{\pi}{2}$ \\
+        \hline
+        $\sqrt{a^2 + (x + b)^2}$ & $x + b = a \tan \theta, -\frac{\pi}{2} < \theta < \frac{\pi}{2}$ \\
+        \hline
+        $\sqrt{(x + b)^2 - a^2}$ & $x + b = a \sec \theta, 0 < \theta < \frac{\pi}{2} \hspace{0.25em} or \hspace{0.25em}\pi \leq \theta < \frac{3\pi}{2}$ \\
+        \hline
+    \end{tabular}
+\egroup
+\end{center}
+\hspace{0.3cm}Manipulate the expression to fit the forms
+
+\subsection{\hspace{0.3cm}Integration by Parts}
+\[ \int f'(x)g(x) dx = f(x)g(x) - \int f(x)g'(x) dx \]
+\hspace{0.3cm}Choice of integration: \\
+\hspace{0.3cm}log, inversion trigo, algebraic functions $\rightarrow$ differentiate \\
+\hspace{0.3cm}exponential functions $\rightarrow$ integrate \\
+\hspace{0.3cm}trigo functions $\rightarrow$ either
+
+\subsection{\hspace{0.3cm}Fundamental Theorem of Calculus}
+\[ \frac{d}{dx} \int^{u(x)}_{a} f(t) dt = f(u(x))u'(x) \]
+\hspace{0.3cm}$\int^{a}_{-a} f(x) dx = 0$ if $f(-x) = -f(x)$ (odd function) \\
+\hspace{0.3cm}$\int^{a}_{-a} f(x) dx = 2 \int^{a}_{0} f(x) dx$ if $f(-x) = f(x)$ (even function) \\
+
+\subsection{Improper Integrals}
+Type 1: integrals with infinite limits of integration \\
+\[ \int^{\infty}_{a} f(x) dx = \lim_{b \to \infty} \int^{b}_{a} f(x) dx \]
+\[ \int^{b}_{-\infty} f(x) dx = \lim_{a \to -\infty} \int^{b}_{a} f(x) dx \]
+\[ \int^{\infty}_{-\infty} f(x) dx = \int^{c}_{-\infty} f(x) dx + \int^{\infty}_{c} f(x) dx \]
+
+Type 2: integrals of functions that become infinite at a point within the interval of integration
+\[ \int^{b}_{a} f(x) dx = \lim_{c \to a^+} \int^{b}_{c} f(x) dx \]
+$f(x)$ is continuous on $(a, b]$ and is discontinuous at $a$
+
+\subsection{Area Between Curves}
+\[ A = \int^{b}_{a} f(x) - g(x) dx \]
+$f(x)$ is the curve above $g(x)$, if the two curves alternate between being top and bottom, split the regions into their respective integrals and intervals \\
+For curves in terms of $y$ and $f(y)$ is further away from the $y$-axis than $g(y)$,
+\[ A = \int^{d}_{c} f(y) - g(y) dy \]
+
+\subsection{Volume of Solid of Revolution}
+Disk method (revolve about the $x$-axis):
+\[ V = \pi \int^{b}_{a} f(x)^2 dx - \pi \int^{b}_{a} g(x)^2 dx \]
+Use $f(y)$, $g(y)$ and differentiate w.r.t. $y$ for revolution about the $y$-axis \\
+Cylindrical shell method (use when difficult/impossible to express $y = f(x)$ as $x = f(y)$):
+\[ V = 2\pi \int^{b}_{a} x|f(x) - g(x)| dx \]
+The above is for rotation about the \textbf{$\mathbf{y}$-axis}, for rotation about the $x$-axis, use $y|f(y) - g(y)| dy$
+
+\subsection{Arc Length of a Curve}
+\[ \int^{b}_{a} \sqrt{1 + f'(x)^2} dx \]
 
 \end{multicols}
 \end{document}
