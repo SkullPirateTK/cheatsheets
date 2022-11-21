@@ -4,6 +4,7 @@
 \usepackage{ifthen}
 \usepackage[landscape]{geometry}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{bm}
 
 
 \pdfinfo{
@@ -239,7 +240,7 @@ $f''(c) > 0 \Rightarrow$ concave upward / local minima,
 $f''(c) < 0 \Rightarrow$ concave downward / local maxima, 
 $f''(c) = 0 \Rightarrow$ point of inflection \\
 End-points are not considered to be local extremas \\
-Critical point: not an end-point and $f'(c) = 0$ or $DNE$
+Critical point: not an end-point and $f'(c) = 0$ or $DNE$ \\
 Absolute extremum: occurs at end-point or critical point
 
 \subsection{L'Hôpital's Rule}
@@ -388,6 +389,247 @@ The above is for rotation about the \textbf{$\mathbf{y}$-axis}, for rotation abo
 
 \subsection{Arc Length of a Curve}
 \[ \int^{b}_{a} \sqrt{1 + f'(x)^2} dx \]
+
+\section{Series}
+\subsection{Common Infinite Series}
+\subsubsection{Geometric Series}
+\[ \sum_{n = 1}^{\infty} ar^{n-1}, \text{\hspace{0.3em}}(a \neq 0) \] \\
+\[ \sum_{i = 1}^{n} ar^{i-1} = \frac{a(1 - r^n)}{1 - r} \] \\
+Convergent to $\frac{a}{1 - r}$ when $|r| < 1$
+\subsubsection{Harmonic Series}
+\[ \sum_{n = 1}^{\infty} \frac{1}{n} \text{\hspace{0.3em}is divergent} \]
+\subsubsection{Alternating Harmonic Series}
+\[ \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \text{\hspace{0.3em}converges to\hspace{0.3em}} ln2\]
+\subsubsection{$\bm{p}$-Series}
+\[ \sum_{n = 1}^{\infty} \frac{1}{n^p} \text{\hspace{0.3em}is convergent} \iff p > 1 \]
+
+\subsection{Convergence \& divergence}
+\subsubsection{$\bm{n\textsuperscript{th}}$ Term Test}
+\[ \text{If\hspace{0.3em}} \sum_{n = 1}^{\infty} a_n \text{\hspace{0.3em}is convergent, then\hspace{0.3em}} \lim_{n \to \infty} a_n = 0 \] \\
+Therefore if $\lim_{n \to \infty} a_n$ does not exist or $\lim_{n \to \infty} a_n \neq 0$ then the series is divergent, inconclusive if $\lim_{n \to \infty} a_n = 0$
+\subsubsection{Integral Test}
+Use when integral is simple/known
+\[ \sum_{n = 1}^{\infty} a_n \text{\hspace{0.3em}is convergent} \iff \int^{\infty}_{1} f(x) dx \text{\hspace{0.3em}is convergent} \]
+\subsubsection{Comparison Test}
+Use when able to establish an inequality to compare to a known series
+\[ \sum_{n = 1}^{\infty} a_n, \sum_{n = 1}^{\infty} b_n, \text{\hspace{0.3em}}a_n \leq b_n \text{\hspace{0.3em}for all\hspace{0.3em}} n \] \\
+\[ \sum_{n = 1}^{\infty} b_n \text{\hspace{0.3em}is convergent} \rightarrow \sum_{n = 1}^{\infty} a_n \text{\hspace{0.3em}is convergent} \] \\
+\[ \sum_{n = 1}^{\infty} a_n \text{\hspace{0.3em}is divergent} \rightarrow \sum_{n = 1}^{\infty} b_n \text{\hspace{0.3em}is divergent} \] 
+\subsubsection{Ratio Test and Root Test}
+Use ratio test on series with power $n$ by taking $n^\textsuperscript{th}$ root
+\[ \sum_{n = 1}^{\infty} a_n, \lim_{n \to \infty} |\frac{a_{n + 1}}{a_n}| = L \text{\hspace{0.5em}\textbf{OR}\hspace{0.5em}} \lim_{n \to \infty} \sqrt[n]{|a_n|} = L \]
+$0 \leq L < 1 \rightarrow$ absolutely convergent \\
+$L > 1 \rightarrow$ divergent \\
+$L = 1 \rightarrow$ inconclusive
+
+\subsection{Alternating Series}
+\[ \sum_{n = 1}^{\infty} (-1)^{n - 1}b_n \] \\
+If $b_n$ is decreasing and $\lim_{n \to \infty} b_n = 0$ then the series is convergent
+
+\subsection{Power Series}
+Power series centered at $a$ \\
+\[ \sum_{n = 0}^{\infty} c_n(x - a)^n = c_0 + c_1(x - a) + c_2(x - a)^2 + ... \] \\
+Exactly one of the following: \\
+\begin{enumerate}
+ \item Converges at $x = a$ only (R = 0)
+ \item Converges for all $x$ (R = $\infty$)
+ \item There exists a positive number $R$ such that the series converges absolutely if $|x - a| < R$ and diverges if $|x - a| > R$
+\end{enumerate}
+$R$ is the radius of convergence, end points of the interval of convergence can converge or diverge \\
+To compute $R$:
+\[ \lim_{n \to \infty} |\frac{c_{n + 1}}{c_n}| = L \text{\hspace{0.5em}\textbf{OR}\hspace{0.5em}} \lim_{n \to \infty} \sqrt[n]{|c_n|} = L, \text{\hspace{0.3em}}L \in \mathbb{R} \vee L = \infty, \text{\hspace{0.3em}}R = \frac{1}{L}\] \\
+
+\subsubsection{Power Series Representation}
+\[ f'(x) = \sum_{n=1}^{\infty} n c_{n} (x-a)^{n-1} + C, |x-a| < R \]
+\[ \int f(x) dx = \sum_{n=0}^{\infty} c_{n} \frac{(x-a)^{n+1}}{n+1} + C, |x-a| < R \]
+To find the power series representation, manipulate the expression into one of the known series to derive the summation
+
+\subsubsection{Taylor Series}
+Coefficients of a power series is given as $c_{n} = \frac{f^{(n)}(a)}{n!}$ \\
+\[ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^{n}\]
+Power series representation of $f$ at $a$, extension of power series
+
+\subsubsection{Maclaurin Series}
+\[ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!} x^{n}\]
+Power series representation of $f$ at $0$, special case of Taylor series
+
+\section{Vectors \& Geometry of Space}
+Equation of a sphere with center $C(x_1,y_1,z_1)$ and radius $r$ \\
+\[ (x-x_1)^2 + (y-y_1)^2 + (z-z_1)^2 = r^2 \]
+Distance formula: $|P_1P_2| = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}$ \\
+Length of a vector: $||v|| = \sqrt{(v_1)^2 + (v_2)^2 + (v_3)^2}$ \\
+Unit vector: $u = v/||v||$ \\
+Dot product: $a \cdot b = a_1b_1 + a_2b_2 + a_3b_3$, $a \cdot b = ||a|| ||b|| \cos{\theta}$, $a \cdot a = ||a||^2$ \\
+$\theta$ is the angle between $a$ and $b$ \\
+ $a$ \& $b$ are perpendicular to each other if $a \cdot b = 0$
+
+\subsection{Projections}
+Component of $b$ along $a$: comp$_{a}b = ||b|| \cos{\theta} = \frac{a \cdot b}{||a||}$ \\
+Vector projection of $b$ onto $a$: $\text{proj}_{a}b = \text{comp}_{a}b \times \frac{a}{||a||} = \frac{a \cdot b}{||a||^2}a$ \\
+
+\subsubsection{Distance from a point to a plane}
+Shortest distance from point $P(x_0, y_0, z_0)$ to the plane $ax + by + cz = d$
+\[ \frac{|ax_0 + by_0 + cz_0 - d|}{\sqrt{a^2 + b^2 + c^2}} \]
+
+\subsection{Cross Product}
+\[a \times b = (a_2b_3 - a_3b_2)i + (a_3b_1 - a_1b_3)j + (a_1b_2 = a_2b_1)k\] 
+$a \times b$ is perpendicular to both $a$ and $b$ \\
+Area of a parallelogram: $||a \times b|| = ||a|| ||b|| \sin{\theta}$ \\
+Distance from $Q$ to the line through $P$ \& $R$: 
+\[||\vec{PQ}|| \sin{\theta} = \frac{||\vec{PQ} \times \vec{PR}||}{||\vec{PR}||}\]
+
+\subsection{Lines}
+$r_0$: known point on the line, $t$: scalar multiple, $v$: direction vector of the line \\
+Vector equation: $r = r_0 + tv$ or $\langle x, y, z \rangle = \langle x_0, y_0, z_0 \rangle + t \langle a, b, c \rangle $ \\
+Parametric equation: $x = x_0 + at$, $y = y_0 + bt$, $z = z_0 + ct$ \\
+If two lines in 3D space are not parallel and does not intersect, then they are skew
+
+\subsection{Planes}
+$n$: normal vector to the plane, $r_0$: point on the plane
+Vector equation: $n \cdot r = n \cdot r_0$ \\
+Linear equation: $ax + by + cz + d = 0, d = -(ax_0 + by_0 + cz_0)$ \\
+Two planes are parallel if their normal vectors are parallel \\
+If two planes are not parallel, they intersect in a line and the angle between two planes is the acute angle between their normal vectors \\
+
+\section{Functions of Several Variables}
+\subsection{Vector-valued Function}
+$r(t) = \langle f(t), g(t), h(t) \rangle = f(t)i + g(t)j + h(t)k$
+$r'(t) = \langle f'(t), g'(t), h'(t) \rangle$
+
+\subsubsection{Derivative Rules}
+$f(t)$: differentiable scalar function, $r(t)$ \& $s(t)$: differentiable vector-valued function \\
+$\frac{d}{dt} f(t)r(t) = f'(t)r(t) + f(t)r'(t)$ \\
+$\frac{d}{dt} r(t) \cdot s(t) = r'(t) \cdot s(t) + r(t) \cdot s'(t)$ \\
+$\frac{d}{dt} r(t) \times s(t) = r'(t) \times s(t) + r(t) \times s'(t)$ \\
+
+\subsubsection{Tangent Vector and Tangent Line to a Curve}
+$r'(t)$ is the tangent vector of $r(t)$, equation of tangent line can be found using a point on the curve and the corresponding tangent vector
+
+\subsubsection{Arc Length of a Space Curve}
+\[ s = \int_{a}^{b} ||r'(t)|| dt \]
+
+\subsection{Functions of Two Variables}
+Elliptic paraboloid symmetric about $z$-axis
+\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z}{c} \]
+Ellipsoid
+\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1 \]
+
+\subsection{Partial Derivatives}
+\subsubsection{Clairaut's Theorem}
+$f_{xy}(a,b) = f_{yx}(a,b)$, $f_{xyy}(a,b) = f_{yxy}(a,b) = f_{yyx}(a,b)$
+
+\subsubsection{Equation of Tangent Planes}
+$z = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)$
+
+\subsubsection{Chain Rule}
+One independent variable: $z = f(x,y), x = g(t), y=h(t)$ \\
+\[ \frac{dz}{dt} = \frac{\delta f}{\delta x} \frac{dx}{dt} + \frac{\delta f}{\delta y} \frac{dy}{dt} \]
+Two independent variables: $z = f(x,y), x = g(s,t), y=h(s,t)$ \\
+\[ \frac{dz}{ds} = \frac{\delta f}{\delta x} \frac{\delta x}{\delta s} + \frac{\delta f}{\delta y} \frac{\delta y}{\delta s} \]
+\[ \frac{dz}{dt} = \frac{\delta f}{\delta x} \frac{\delta x}{\delta t} + \frac{\delta f}{\delta y} \frac{\delta y}{\delta t} \]
+
+\subsubsection{Implicit Differentiation}
+Two independent variables: $F(x,y,z) = 0, z = f(x,y)$ \\
+\[ \frac{\delta z}{\delta x} = -\frac{F_x}{F_z}, \frac{\delta z}{\delta y} = -\frac{F_y}{F_z} \]
+
+\subsubsection{Approximation of Increment}
+Good approximation provided $\Delta x$ \& $\Delta y$ are small \\
+$\Delta z \approx dz = f_x(a,b) \Delta x + f_y(a,b) \Delta y$
+
+\subsection{Directional Derivative}
+Gradient of $f(x,y)$
+\[ \nabla f(x,y) = \langle f_x, f_y \rangle = f_{x}i + f_{y}j \]
+Directional derivative of $f(x,y)$ in the direction of unit vector $u = \langle a, b \rangle$
+\[ D_{u}f(x,y) = \nabla f(x,y) \cdot u = f_x(x,y)a + f_y(x,y)b \]
+Similarly for $f(x,y,z)$
+\[ D_{u}f(x,y,z) = \nabla f(x,y,z) \cdot u = f_x(x,y,z)a + f_y(x,y,z)b + f_z(x,y,z)c \]
+
+\subsubsection{Tangent Plane to Level Surface}
+$\nabla f$ is normal to the level curve/surface $f$ \\
+\[ \nabla f(x_0,y_0,z_0) \cdot \langle x-x_0, y-y_0, z-z_0 \rangle = 0 \]
+
+\subsubsection{Maximum Rate of Increase/Decrease}
+Maximum value of $D_{u}f(P)$:  $||\nabla f(P)||$, minimum value: $-||\nabla f(P)||$
+
+\subsection{Local Extrema}
+If $f(x,y)$ has a local maximum or minimum at $(a,b)$, then $f_x(a,b) = f_y(a,b) = 0$ \\
+$(a,b)$ is a critical point if the above is true or one of the partial derivatives does not exist \\
+
+\subsubsection{Second Derivative Test}
+\[ D(a,b) = f_{xx}(a,b)f_{yy}(a,b) - (f_{xy}(a,b))^2 \]
+$f_{yy}$ can be substituted as $f_{xx}$ below \\
+\begin{itemize}
+\item Local maximum: $D > 0$ and $f_{xx}(a,b) > 0$ \\
+\item Local minimum: $D > 0$ and $f_{xx}(a,b) < 0$ \\
+\item Saddle point: $D < 0$ \\
+\item No conclusion: $D = 0$ \\
+\end{itemize}
+
+\section{Double Integrals}
+\subsection{Iterated Integral}
+\[ V = \int\int_{R} f(x,y) dA = \int_{a}^{b} \int_{c}^{d} f(x,y) dydx = \int_{c}^{d} \int_{a}^{b} f(x,y) dxdy \]
+If $f(x,y)$ can be factored into $g(x)h(y)$
+\[ \int\int_{R} g(x)h(y) dA = (\int_{a}^{b} g(x) dx)(\int_{c}^{d} h(y) dy)\]
+
+\subsubsection{Double Integral Over a General Region}
+Type I domain, region between two functions of $x$
+\[ \int_{a}^{b} \int_{g_1(x)}^{g_2(x)} f(x,y) dydx, y = g_1(x), y = g_2(x) \]
+Type II domain, region between two functions of $y$
+\[ \int_{c}^{d} \int_{h_1(y)}^{h_2(y)} f(x,y) dxdy, x = h_1(y), x = h_2(y) \]
+
+\subsection{Double Integrals in Polar Coordinates}
+$r^2 = x^2 + y^2, x = r\cos{\theta}, y = r\cos{\theta}$
+\[ \int\int_{R} f(x,y) dA = \int_{\alpha}^{\beta} \int_{a}^{b} f(r\cos{\theta}, r\sin{\theta}) rdrd\theta \]
+$0 \leq a \leq r \leq b, \alpha \leq \theta \leq \beta$, sketch $R$ to determine limits, use polar coordinates when region is circular
+
+\subsection{Surface Area}
+\[ \int\int_{D} \sqrt{(f_x)^2 + (f_y)^2 + 1} \text{\hspace{0.3em}} dA \]
+
+\section{Ordinary Differential Equations}
+\subsection{Separable ODE}
+\[ \frac{dy}{dx} = f(x)g(y) \]
+Separate the variables \\
+\[ \frac{1}{g(y)}dy = f(x)dx \]
+Integrate both sides \\
+\[ \int \frac{1}{g(y)}dy = \int f(x)dx + C\]
+
+\subsection{Reduction to Separable Form}
+\subsubsection{Radical}
+\[ y' = g(\frac{y}{x}) \]
+Let $v = \frac{y}{x}$, then $y=vx$ and $y' = v + xv'$, and the equation becomes $v + xv' = g(v)$ which is separable \\
+
+\subsubsection{Linear}
+\[ y' = f(ax + by + c) \]
+Set $u = ax + by + c$ \\
+
+\subsection{Linear First Order ODE}
+\[ \frac{dy}{dx} + P(x)y = Q(x) \]
+Integrating factor: $I(x) = e^{\int P(x) dx}$ \\
+Multiply both sides by $I(x)$ and integrate both sides, solve for y \\
+\[ y \cdot I(x) = \int Q(x) \cdot I(x) dx \]
+
+\subsection{Bernoulli Equation}
+\[ y' + p(x)y = q(x)y^n \]
+Let $u = y^{1-n}$, then $u' = (1-n)y^{1-n}y'$, so
+\[ u' + (1-n)p(x)u = (1-n)q(x) \]
+Which is a linear first order ODE
+
+\subsection{Improved Malthus Model of Population}
+\[ N = \frac{N_{\infty}}{1 + (\frac{N_{\infty}}{N} - 1)e^{-Bt}} \]
+$D = sN$, $N_{\infty} = \frac{B}{s}$ (carrying capacity), $N = \frac{B}{2s}$ (point of inflection) \\
+
+\subsection{Common ODE}
+\subsubsection{Half-life of $x$}
+Let $x(t)$ be the amount of $x$ at time t, $\frac{dx}{dt} = -k_{x}x(t)$ $\rightarrow$ $x(t) = x_0 e^{-k_{x}t}$ $\rightarrow$ $k_x = \frac{ln2}{\text{half-life of x}}$
+
+\subsubsection{Newton's Law of Cooling}
+\[ \frac{dT}{dt} = -k(T - T_{\text{amb}}) \]
+
+\subsubsection{Newton's Second Law}
+\[ \text{force} - \text{resistance} = m \frac{dV}{dt} \]
+
+\subsubsection{Mixture}
+\[ \frac{dQ}{dt} = \text{input} - \text{output} \]
 
 \end{multicols}
 \end{document}
